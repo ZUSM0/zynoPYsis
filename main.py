@@ -1,9 +1,10 @@
 from system import *
 from extra import *
 
-movie = IMDb().get_movie('1129398').items()
-for movies in movie:
-    print(movies)
+help(exit())
+# movie = IMDb().get_movie('3955170').items()
+# for movies in movie:
+#     print(movies)
 choose = ['Informações sobre um filme', 'Top 20 filmes do momento', 'Sair']
 while True:
     header(colors("O QUE DESEJA VER?", color="verde", ngr=True))
@@ -13,13 +14,14 @@ while True:
 
     choice = number_checker(colors("Sua opção:", color='amareloc'), len(choose))
 
+    #usar a função header para colocar os titulos
     if choice == 1:
         row(17)
         while True:
             title = input(colors("Digite o nome do filme:", color='ciano')).strip()
             print()
-            info(title)
-
+            id_checker(title)
+            #mudei pra chamar a função info depois que saber se o resultado foi certo ou não(id chcker primeiro depois info e etc)
             rep = ""
             while rep == "":
                 rep = input(colors("\nVocê deseja continuar?[S/N]", color='amareloc')).lower()

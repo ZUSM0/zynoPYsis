@@ -30,11 +30,9 @@ def Year(ID):
 
 
 def Title(ID):
-    #retorna o nome do titulo. Depois decidir se pega o titulo original em inglês("original title")
-    # ou o titulo em portugues("localized title")
-    OrigtitleDb = IMDb().get_movie(ID)['original title']
-    LocaltitleDb = IMDb().get_movie(ID)['localized title']
-    print(OrigtitleDb)
+    #retorna o nome do titulo.
+    title = IMDb().get_movie(ID)[0]
+    return title
 
 
 def Writers(ID):
@@ -104,4 +102,4 @@ def Cast(ID):
 def Synopsis(ID):
     #Pega um ID e mostrar a sinopse do filme.
     movie = IMDb().get_movie_synopsis(ID)
-    print(f"'{movie['data']['plot'][0]}'")
+    return f"'{movie['data']['plot'][0]}'"

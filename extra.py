@@ -1,5 +1,4 @@
 from formatting import *
-
 #resolver a questão do system e fazer os tratamentos de erro(para quando não encontrar nenhum filme por exemplo)
 
 def director_or_creator(ID):
@@ -16,21 +15,27 @@ def director_or_creator(ID):
 
 
 def id_checker(title):
+    from system import info
     # Pega o titulo do filme e converte em um ID.
     import imdb
 
     movie = imdb.IMDb()
     moviesDb = movie.search_movie(title)
-    for pos, movie in enumerate(moviesDb):
-        print(f"{pos+1} - {movie}")
-    print()
-    opt = number_checker(colors("Digite o número do filme que deseja ver as informações[0 para sair]:", color='amareloc'), len(moviesDb))
-    if (opt-1) < 0:
-        pass
+    if len(moviesDb) == 0:
+        print(f'Não há filmes com esse título.')
     else:
-        print(moviesDb[opt-1].getID())
-        return f"{moviesDb[opt-1].getID()}"
+        for pos, movie in enumerate(moviesDb):
+            print(f"{pos+1} - {movie}")
+        print()
+        opt = number_checker(colors("Digite o número do filme que deseja ver as informações[0 para sair]:", color='amareloc'), len(moviesDb))
+        if (opt-1) < 0:
+            pass
+        else:
+            print(moviesDb[opt-1].getID())
+            info(moviesDb[opt-1].getID())
 
+def errors_handling():
+    pass
 
 def number_checker(ask, total):
     while True:
