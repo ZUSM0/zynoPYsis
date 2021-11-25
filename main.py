@@ -1,7 +1,6 @@
 from system import *
 from extra import *
 
-help(exit())
 # movie = IMDb().get_movie('3955170').items()
 # for movies in movie:
 #     print(movies)
@@ -13,14 +12,15 @@ while True:
     row(17)
 
     choice = number_checker(colors("Sua opção:", color='amareloc'), len(choose))
+    analyzer()
 
     #usar a função header para colocar os titulos
     if choice == 1:
-        row(17)
+        header(colors("ZynoPysis", color='azul'))
         while True:
             title = input(colors("Digite o nome do filme:", color='ciano')).strip()
             print()
-            id_checker(title)
+            movie_checker(title)
             #mudei pra chamar a função info depois que saber se o resultado foi certo ou não(id chcker primeiro depois info e etc)
             rep = ""
             while rep == "":
@@ -29,16 +29,14 @@ while True:
                 break
 
     elif choice == 2:
-        row(17)
-        print(colors("TOP 20 FILMES SÃO:"))
+        header(colors("TOP 20 FILMES SÃO:",color='azul'))
         print()
-        Top_20()
+        top_20()
         print()
 
     elif choice == 3:
         print(colors("\nObrigado por usar o programa!!!", color='verde'))
         break
-
 #procurar API do google tradutor para traduzir as legendas caso o usuário do programa queira. Idéia de uma: Googletrans.pypi
 #Formatar tudo com a biblioteca os depois
 #planejar uma forma de limpar o console cada vez que não precisar de uma determinada parte exibindo(semelhante o que consegue fazer um c#)

@@ -1,5 +1,16 @@
 from formatting import *
-#resolver a questão do system e fazer os tratamentos de erro(para quando não encontrar nenhum filme por exemplo)
+
+
+def analyzer(url="https://www.imdb.com/"):
+    from requests import head
+
+    try:
+        head(url)
+    except:
+        print(colors('OPS: parece que o progama não pode ser usado nesse momento...', color='vermelho', ngr=True), end=" ")
+        print(colors('Mas tente novamente mais tarde.', color='amareloc'))
+        exit()
+
 
 def director_or_creator(ID):
     from functions import Directors, Creators, Writers
@@ -14,28 +25,27 @@ def director_or_creator(ID):
             print("Autor = Autor da obra pesquisada não encontrado.")
 
 
-def id_checker(title):
-    from system import info
+def movie_checker(title):
     # Pega o titulo do filme e converte em um ID.
     import imdb
+    from system import info
 
     movie = imdb.IMDb()
     moviesDb = movie.search_movie(title)
     if len(moviesDb) == 0:
-        print(f'Não há filmes com esse título.')
+        print(colors(f"Não há filmes com esse título.", color='vermelho'))
     else:
         for pos, movie in enumerate(moviesDb):
             print(f"{pos+1} - {movie}")
         print()
         opt = number_checker(colors("Digite o número do filme que deseja ver as informações[0 para sair]:", color='amareloc'), len(moviesDb))
+        print()
         if (opt-1) < 0:
-            pass
+            print(colors("Não achou o que procurava? Talvez você queira tentar novamente...", color='magenta', ngr=True))
         else:
-            print(moviesDb[opt-1].getID())
-            info(moviesDb[opt-1].getID())
+            ID = moviesDb[opt-1].getID()
+            info(ID)
 
-def errors_handling():
-    pass
 
 def number_checker(ask, total):
     while True:

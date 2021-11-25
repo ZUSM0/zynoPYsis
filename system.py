@@ -9,36 +9,30 @@ from extra import *
 #     #     print(movies)
 #     #
 
-
-def Top_20():
-    TopMovies = IMDb().get_popular100_movies()
-    for cont, movies in enumerate(TopMovies[0:20]):
+def top_20():
+    topMovies = IMDb().get_popular100_movies()
+    for cont, movies in enumerate(topMovies[0:20]):
         print(f"{cont+1} - {movies}")
 
 
 def info(code):
 
-    try:
-        title = Title(code)
-        year = Year(code)
-        season = Seasons(code)
-        kind = Kind(code)
-        genre = Genre(code)
-        rating = Rating(code)
-        synop = Synopsis(code)
+    print(Kind(code))
+    if Kind(code) == 'movie':
+        print(f"{colors('O titulo do filme é:', color='azul')} {Title(code)}")
+        print(f"{colors(f'Ano de lançamento:', color='azul')} {Year(code)}")
+        print(f"{colors('Gênero:', color='azul')}", end='')
+        Genre(code)
+        print(f"{colors('Nota:', color='azul')} {Rating(code)}/10")
+        print()
+        Synopsis(code)
 
-        if kind == 'movie':
-            print(f"{colors('O titulo do filme é:', color='azul')} {title}")
+    elif Kind(code) == 'tv series':
+        print(f"{colors('O titulo do série é:', color='azul')} {Title(code)}")
 
-        elif kind == 'tv series':
-            print(f"{colors('O titulo do série é:', color='azul')} {title}")
+    elif Kind(code) == 'tv mini series':
+        print(f"{colors('O titulo do minissérie é:', color='azul')} {Title(code)}")
 
-        elif kind == 'tv mini series':
-            print(f"{colors('O titulo do minissérie é:', color='azul')} {title}")
-
-        else:
-            print(colors(f"OPS: Parece que ainda não temos informações a opção escolhida.", color='vermelho'))
-            print(colors(f"Mas por favor, faça outra pesquisa...", color='amareloc'), end=" ")
-
-    except (TypeError):
-        print(colors("Não achou o que procurava? Talvez você queira tentar novamente...", color='magenta', ngr=True))
+    else:
+        print(colors(f"OPS: Parece que ainda não temos informações a opção escolhida.", color='vermelho'))
+        print(colors(f"Mas por favor, faça outra pesquisa...", color='amareloc'), end="\n")

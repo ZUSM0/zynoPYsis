@@ -14,7 +14,18 @@ def Kind(ID):
 def Genre(ID):
     #Verificar o genero do filme.
     genreDb = IMDb().get_movie(ID)['genres']
-    return genreDb
+    for cont, genre in enumerate(genreDb):
+        if cont == 0:
+            if len(genreDb) > 2:
+                print(f"{genre}", end="")
+            elif len(genreDb) == 2:
+                print(f"{genre}", end="")
+            else:
+                print(f"{genreDb}.")
+        elif (cont + 1) < len(genreDb):
+            print(f", {genre}", end="")
+        else:
+            print(f" e {genre}.")
 
 
 def Rating(ID):
@@ -31,7 +42,7 @@ def Year(ID):
 
 def Title(ID):
     #retorna o nome do titulo.
-    title = IMDb().get_movie(ID)[0]
+    title = IMDb().get_movie(ID)['title']
     return title
 
 
@@ -40,30 +51,30 @@ def Writers(ID):
     for cont, writers in enumerate(writersDb):
         if cont == 0:
             if len(writersDb) > 2:
-                print(f"Escritores = {writers}", end=", ")
+                print(f"Escritores = {writers}", end="")
             elif len(writersDb) == 2:
-                print(f"Escritores = {writers}", end=" ")
+                print(f"Escritores = {writers}", end="")
             else:
                 print(f"Escritores = {writers}.")
         elif (cont + 1) < len(writersDb):
-            print(writers, end=", ")
+            print(f", {writers}", end="")
         else:
-            print(f"e {writers}.")
+            print(f" e {writers}.")
 
 def Creators(ID):
     creatorsDb = IMDb().get_movie(ID)
     for cont, creators in enumerate(creatorsDb['creator']):
         if cont == 0:
             if len(creatorsDb['creator']) > 2:
-                print(f"Criadores = {creators}", end=", ")
+                print(f"Criadores = {creators}", end="")
             elif len(creatorsDb['creator']) == 2:
-                print(f"Criadores = {creators}", end=" ")
+                print(f"Criadores = {creators}", end="")
             else:
                 print(f"Criador = {creators}.")
         elif (cont + 1) < len(creatorsDb['creator']):
-            print(creators, end=", ")
+            print(f", {creators}", end="")
         else:
-            print(f"e {creators}.")
+            print(f" e {creators}.")
 
 
 def Directors(ID):
@@ -102,4 +113,4 @@ def Cast(ID):
 def Synopsis(ID):
     #Pega um ID e mostrar a sinopse do filme.
     movie = IMDb().get_movie_synopsis(ID)
-    return f"'{movie['data']['plot'][0]}'"
+    print(f"'{movie['data']['plot'][0]}'")
