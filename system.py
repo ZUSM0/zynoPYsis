@@ -1,17 +1,9 @@
 from functions import *
 from extra import *
 
-# def sugestões():
-#Vai precisar de um tradutor no futuro
-#     #Colocar um menu de sugestão de filmes com base em alguma palavra chave
-#     # movie = IMDb().get_keyword('school')
-#     # for movies in movie:
-#     #     print(movies)
-#     #
-
-def top_20():
+def top_10():
     topMovies = IMDb().get_popular100_movies()
-    for cont, movies in enumerate(topMovies[0:20]):
+    for cont, movies in enumerate(topMovies[0:10]):
         print(f"{cont+1} - {movies}")
 
 
@@ -34,5 +26,5 @@ def info(code):
         print(f"{colors('O titulo do minissérie é:', color='azul')} {Title(code)}")
 
     else:
-        print(colors(f"OPS: Parece que ainda não temos informações a opção escolhida.", color='vermelho'))
+        print(colors(f"OPS: Parece que ainda não temos informações sobre opção escolhida.", color='vermelho'))
         print(colors(f"Mas por favor, faça outra pesquisa...", color='amareloc'), end="\n")

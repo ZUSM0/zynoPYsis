@@ -2,7 +2,7 @@ def row(n):
     print("~~" * n)
 
 
-def header(msg, acr=0):
+def header(msg):
     row(17)
     print(f"{msg}".center(32))
     row(17)
@@ -12,7 +12,7 @@ def colors(msg, color="black".lower(), ngr=False):
     if ngr:
         ngr = 1
 
-    elif ngr == False:
+    elif not ngr:
         ngr = 0
 
     if color == "vermelho":

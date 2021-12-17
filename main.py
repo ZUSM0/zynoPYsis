@@ -1,10 +1,7 @@
 from system import *
 from extra import *
 
-# movie = IMDb().get_movie('3955170').items()
-# for movies in movie:
-#     print(movies)
-choose = ['Informações sobre um filme', 'Top 20 filmes do momento', 'Sair']
+choose = ['Informações sobre um filme', 'Top 10 filmes do momento', 'Sair']
 while True:
     header(colors("O QUE DESEJA VER?", color="verde", ngr=True))
     for num, c in enumerate(choose):
@@ -29,14 +26,11 @@ while True:
                 break
 
     elif choice == 2:
-        header(colors("TOP 20 FILMES SÃO:",color='azul'))
+        header(colors("TOP 10 FILMES SÃO:",color='azul'))
         print()
-        top_20()
+        top_10()
         print()
 
     elif choice == 3:
         print(colors("\nObrigado por usar o programa!!!", color='verde'))
         break
-#procurar API do google tradutor para traduzir as legendas caso o usuário do programa queira. Idéia de uma: Googletrans.pypi
-#Formatar tudo com a biblioteca os depois
-#planejar uma forma de limpar o console cada vez que não precisar de uma determinada parte exibindo(semelhante o que consegue fazer um c#)
