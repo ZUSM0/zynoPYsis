@@ -1,7 +1,8 @@
 from system import *
 from extra import *
 
-choose = ['Informações sobre um filme', 'Top 10 filmes do momento', 'Sair']
+
+choose = ['Informações sobre um filme ou série', 'Top 10 filmes do momento', 'Sair']
 while True:
     header(colors("O QUE DESEJA VER?", color="verde", ngr=True))
     for num, c in enumerate(choose):
@@ -13,8 +14,8 @@ while True:
 
     #usar a função header para colocar os titulos
     if choice == 1:
-        header(colors("ZynoPysis", color='azul'))
         while True:
+            header(colors("ZynoPysis", color='azul'))
             title = input(colors("Digite o nome do filme:", color='ciano')).strip()
             print()
             movie_checker(title)
@@ -26,7 +27,7 @@ while True:
                 break
 
     elif choice == 2:
-        header(colors("TOP 10 FILMES SÃO:",color='azul'))
+        header(colors("TOP 10 FILMES SÃO:", color='azul'))
         print()
         top_10()
         print()

@@ -7,7 +7,7 @@ def analyzer(url="https://www.imdb.com/"):
     try:
         head(url)
     except:
-        print(colors('OPS: parece que o progama não pode ser usado nesse momento...', color='vermelho', ngr=True), end=" ")
+        print(colors('OPS: parece que o programa não pode ser usado nesse momento...', color='vermelho', ngr=True), end=" ")
         print(colors('Mas tente novamente mais tarde.', color='amareloc'))
         exit()
 
